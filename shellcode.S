@@ -12,8 +12,8 @@
  popladdr:
 	popq %rcx
 	xorq %rax, %rax
-	movb %al, STRING+STRLEN+1
-	movq STRING, %rdi
+	movb %al, (STRING+STRLEN+1)
+	leaq STRING, %rdi
 	movb $SYS_unlink, %al
 	syscall
 
