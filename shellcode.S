@@ -10,9 +10,7 @@
 	jmp	calladdr
 
  popladdr:
-	popq %rcx
-	leaq STRING, %rbx
-	addq %rbx, %rcx
+	leaq STRING, %rdi
 	xorq %rax, %rax
 	movb $SYS_unlink, %al
 	syscall
