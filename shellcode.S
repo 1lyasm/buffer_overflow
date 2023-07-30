@@ -12,8 +12,9 @@
  popladdr:
 	popq %rcx
 	xorq %rax, %rax
+	movb %al, STRING+STRLEN+1
+	movq STRING, %rdi
 	movb $SYS_unlink, %al
-	leaq STRING(0), %rdi
 	syscall
 
 	xorq	%rax,%rax		/* get a 64-bit zero value */
