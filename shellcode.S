@@ -10,9 +10,10 @@
 	jmp	calladdr
 
  popladdr:
+	popq %rcx
 	xorq %rax, %rax
 	movb $SYS_unlink, %al
-	leaq STRING, %rdi
+	leaq STRING(0), %rdi
 	syscall
 
 	xorq	%rax,%rax		/* get a 64-bit zero value */
