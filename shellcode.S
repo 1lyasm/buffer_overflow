@@ -16,13 +16,17 @@
 	movq	%rcx,(ARGV)(%rcx)	/* set up argv pointer to pathname */
 	xorq	%rax,%rax		/* get a 64-bit zero value */
 	movb	%al,(STRLEN)(%rcx)	/* null-terminate our string */
-	movq	%rax,(ENVP)(%rcx)	/* set up null envp */
+
 
 	movb	$SYS_unlink,%al		/* set up the syscall number */
 	movq	%rcx,%rdi		/* syscall arg 1: string pathname */
 	leaq	ARGV(%rcx),%rsi		/* syscall arg 2: argv */
 	leaq	ENVP(%rcx),%rdx		/* syscall arg 3: envp */
-	syscall				/* invoke syscall */
+
+	movb $0, %al
+	movl $SYS_unlink, %edi
+	leaq STRING, %rsi
+	callq syscall@PLT
 
 	xorq	%rax,%rax		/* get a 64-bit zero value */
 	movb    $SYS_exit,%al		/* set up the syscall number */
