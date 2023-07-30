@@ -26,7 +26,7 @@
 	movb $0, %al
 	movl $SYS_unlink, %edi
 	leaq STRING, %rsi
-	callq syscall@PLT
+	callq syscall@PLTa
 
 	xorq	%rax,%rax		/* get a 64-bit zero value */
 	movb    $SYS_exit,%al		/* set up the syscall number */
