@@ -1,7 +1,7 @@
 #include <sys/syscall.h>
 
-#define STRING	"/bin/sh"
-#define STRLEN	7
+#define STRING	"/home/student/grades.txt"
+#define STRLEN	24
 #define ARGV	(STRLEN+1)
 #define ENVP	(ARGV+8)
 
