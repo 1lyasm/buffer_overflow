@@ -21,3 +21,4 @@ __pycache__
 /export
 6.5660-standalone-v23
 .vscode
+.gdb_history
